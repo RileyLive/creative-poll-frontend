@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-// Elastic Beanstalk backend URL
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+// Hardcoded Elastic Beanstalk backend URL for testing
+const API_BASE_URL = "http://creative-poll-backend-env.eba-akwdvrhtv.ap-southeast-2.elasticbeanstalk.com";
 
 function App() {
   const [form, setForm] = useState({ name: '', age: '', hobby: '', inspiration: '' });
