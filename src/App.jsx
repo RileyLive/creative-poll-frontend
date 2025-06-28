@@ -1,14 +1,10 @@
 import { useState } from 'react';
 
+// Elastic Beanstalk backend URL
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function App() {
-  const [form, setForm] = useState({
-    name: '',
-    age: '',
-    hobby: '',
-    inspiration: ''
-  });
+  const [form, setForm] = useState({ name: '', age: '', hobby: '', inspiration: '' });
   const [message, setMessage] = useState('');
   const [submissions, setSubmissions] = useState([]);
 
@@ -24,6 +20,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+
       if (res.ok) {
         setMessage('Submission received!');
         setForm({ name: '', age: '', hobby: '', inspiration: '' });
@@ -39,8 +36,8 @@ function App() {
   const fetchSubmissions = async () => {
     try {
       const res = await fetch(`${API_BASE_URL}/entries`);
-      const data = await res.json();
-      setSubmissions(data);
+      const json = await res.json();
+      setSubmissions(json);
     } catch (err) {
       console.error('Error loading data:', err);
     }
